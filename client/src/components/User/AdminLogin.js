@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { AuthConsumer } from '../providers/AuthProvider'
+import { AuthConsumer } from '../../providers/AuthProvider'
 
 const AdminLogin = (props) => {
   const [ name, setName ] = useState('')
@@ -14,7 +14,7 @@ const AdminLogin = (props) => {
   return (
     <>
       <form onSubmit={handleSubmit}>
-        <label for="name">Name: </label>
+        <label htmlFor="name">Name: </label>
         <input 
         autoFocus 
         required
@@ -24,7 +24,7 @@ const AdminLogin = (props) => {
         placeholder="Name" 
         onChange={(e) => setName(e.target.value)}
         />
-        <label for="password">Password: </label>
+        <label htmlFor="password">Password: </label>
         <input  
         required
         type="password"

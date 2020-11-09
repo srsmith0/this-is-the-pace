@@ -8,26 +8,33 @@ class AuthProvider extends React.Component {
   state = { user: null };
 
   handleRegister = (user, history) => {
+    debugger;
     axios.post("/api/auth", user)
     .then((res) => {
       this.setState({ user: res.data.data, });
+      //TODO: push to admin landing page
       history.push("/");
     }).catch((err) => {
+      debugger;
       console.log(err)
       alert("Registration Failed")
     })
   }
 
   handleLogin = (user, history) => {
+    debugger;
     axios.post("/api/auth/sign_in", user)
     .then((res) => {
       this.setState({ user: res.data.data });
+     //TODO: push to admin landing page
       history.push("/")
     }).catch((err) => {
       console.log(err)
       alert("Login Failed")
     })
   }
+
+  //FIXME: add handle update function
 
   handleLogout = (history) => {
     axios.delete("/api/auth/sign_out")

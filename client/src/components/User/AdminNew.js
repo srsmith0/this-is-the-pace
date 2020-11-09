@@ -1,29 +1,39 @@
 import React, { useState } from 'react'
-import { AuthConsumer } from '../providers/AuthProvider'
+import { AuthConsumer } from '../../providers/AuthProvider'
 
 const AdminNew = (props) => {
   const [ name, setName ] = useState('')
+  const [ email, setEmail ] = useState('')
   const [ password, setPassword ] = useState('')
   const [ passwordConfirm, setPasswordConfirm ] = useState('')
   const [ noMatch, setNoMatch ] = useState(false)
 
-  const user = {name, password}
+  const user = {email, name, password}
 
   const handleSubmit = (e) => {
     e.preventDefault()
     if(password === passwordConfirm) {
       props.auth.handleRegister(user, props.history);
      setNoMatch(false)
-    } 
-      return setNoMatch(!noMatch)
+    } else setNoMatch(!noMatch)
   }
 
   return (
     <>
       <form onSubmit={handleSubmit}>
-        <label for="name">Name: </label>
+      <label htmlFor="email">Email: </label>
         <input 
         autoFocus 
+        required
+        type="email"
+        id="email"
+        name="email"
+        value={email}
+        placeholder="Email"
+        onChange={(e) => setEmail(e.target.value)}
+        />
+        <label htmlFor="name">Name: </label>
+        <input 
         required
         id="name"
         name="name"
@@ -31,7 +41,7 @@ const AdminNew = (props) => {
         placeholder="Name"
         onChange={(e) => setName(e.target.value)}
         />
-        <label for="password">Password: </label>
+        <label htmlFor="password">Password: </label>
         <input  
         required
         type="password"
@@ -41,7 +51,7 @@ const AdminNew = (props) => {
         placeholder="Password"
         onChange={(e) => setPassword(e.target.value)}
         />
-        <label for="passwordConfirm">Confirm Password: </label>
+        <label htmlFor="passwordConfirm">Confirm Password: </label>
         <input  
         required
         type="password"
