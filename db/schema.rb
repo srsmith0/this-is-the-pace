@@ -16,30 +16,30 @@ ActiveRecord::Schema.define(version: 2020_11_09_221724) do
   enable_extension "plpgsql"
 
   create_table "comments", force: :cascade do |t|
-    t.bigint "post_id", null: false
     t.string "author"
     t.string "content"
     t.string "reply"
+    t.bigint "post_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["post_id"], name: "index_comments_on_post_id"
   end
 
   create_table "posts", force: :cascade do |t|
-    t.bigint "user_id", null: false
     t.string "title"
     t.string "content"
     t.string "image"
-    t.string "comments"
+    t.string "user_name"
+    t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
   create_table "replies", force: :cascade do |t|
-    t.bigint "comment_id", null: false
     t.string "author"
-    t.string "reply"
+    t.string "content"
+    t.bigint "comment_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["comment_id"], name: "index_replies_on_comment_id"
