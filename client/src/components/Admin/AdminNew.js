@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import { AuthConsumer } from '../../providers/AuthProvider'
+import React, { useContext, useState } from 'react'
+import { AuthConsumer, AuthContext } from '../../providers/AuthProvider'
 
 const AdminNew = (props) => {
   const [ name, setName ] = useState('')
@@ -7,14 +7,14 @@ const AdminNew = (props) => {
   const [ password, setPassword ] = useState('')
   const [ passwordConfirm, setPasswordConfirm ] = useState('')
   const [ noMatch, setNoMatch ] = useState(false)
-
-  const user = {email, name, password}
+  const { handleRegister } = useContext(AuthContext)
 
   const handleSubmit = (e) => {
     e.preventDefault()
+    const user = {email, name, password}
     if(password === passwordConfirm) {
-      props.auth.handleRegister(user, props.history);
-     setNoMatch(false)
+      handleRegister(user, props.history);
+      setNoMatch(false)
     } else setNoMatch(!noMatch)
   }
 
