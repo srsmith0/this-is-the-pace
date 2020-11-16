@@ -1,28 +1,30 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 import { AuthConsumer } from '../../providers/AuthProvider'
 
 const AdminLogin = (props) => {
-  const [ name, setName ] = useState('')
+  const [ email, setEmail ] = useState('')
   const [ password, setPassword ] = useState('')
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    props.auth.handleLogin( {name, password}, props.history)
+    props.auth.handleLogin( {email, password}, props.history)
   }
 
+  if(!props.auth.authenticated){
   return (
     <>
       <form onSubmit={handleSubmit}>
-        <label htmlFor="name">Name: </label>
+        <label htmlFor="email">Email: </label>
         <input 
         autoFocus 
         required
-        id="name"
-        name="name"
-        value={name}
-        placeholder="Name" 
-        onChange={(e) => setName(e.target.value)}
+        type="email"
+        id="email"
+        name="email"
+        value={email}
+        placeholder="Email" 
+        onChange={(e) => setEmail(e.target.value)}
         />
         <label htmlFor="password">Password: </label>
         <input  
@@ -38,9 +40,10 @@ const AdminLogin = (props) => {
       </form>
       <Link to="/admin/new">
         Register
-      </Link>  
+      </Link>
     </>  
   )
+  } else return <Redirect to="/admin/home" />
 
 }
 

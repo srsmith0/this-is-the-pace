@@ -7,6 +7,9 @@ import NoMatch from './components/NoMatch';
 import FetchUser from './components/Admin/FetchUser';
 import NewPost from './components/Posts/NewPost';
 import AdminShowPosts from './components/Admin/AdminShowPosts';
+import AdminHome from './components/Admin/AdminHome';
+import ProtectedRoute from './components/Admin/ProtectedRoute';
+import AdminPostView from './components/Admin/AdminPostView';
 
 const App = () => (
   <Fragment>
@@ -14,11 +17,11 @@ const App = () => (
       <Switch>
         <Route exact path="/" component={LandingPage} />
         <Route exact path="/admin" component={AdminLogin} />
-        {/* <NavBar> */}
         <Route exact path="/admin/new" component={AdminNew} />
-        <Route exact path="/admin/all_posts" component={AdminShowPosts} />
-        <Route exact path="/admin/new_post" component={NewPost} />
-        {/* </NavBar> */}
+        <ProtectedRoute exact path="/admin/home" component={AdminHome} />
+        <ProtectedRoute exact path="/admin/all_posts" component={AdminShowPosts} />
+        <ProtectedRoute exact path="/admin/post_view" component={AdminPostView} />
+        <ProtectedRoute exact path="/admin/new_post" component={NewPost} />
         <Route component={NoMatch} />
       </Switch>
     </FetchUser>

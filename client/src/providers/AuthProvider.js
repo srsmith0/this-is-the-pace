@@ -7,24 +7,24 @@ export const AuthConsumer = AuthContext.Consumer;
 class AuthProvider extends React.Component {
   state = { user: null };
 
-  handleRegister = (user, history) => {
+  handleRegister = (user, history, registrationCode) => {
+    if(registrationCode === 123){
     axios.post("/api/auth/", user)
     .then((res) => {
       this.setState({ user: res.data.data, });
-      //TODO: push to admin landing page
       history.push("/");
     }).catch((err) => {
       console.log(err)
       alert("Registration Failed")
     })
+    } else return alert("Invaild Registration Code")
   }
 
   handleLogin = (user, history) => {
     axios.post("/api/auth/sign_in", user)
     .then((res) => {
       this.setState({ user: res.data.data });
-     //TODO: push to admin landing page
-      history.push("/")
+      history.push("/admin/home")
     }).catch((err) => {
       console.log(err)
       alert("Login Failed")
@@ -35,9 +35,9 @@ class AuthProvider extends React.Component {
 
   handleLogout = (history) => {
     axios.delete("/api/auth/sign_out")
-    .then((res) => {
+    .then(() => {
+      history.push("/admin")
       this.setState({ user: null });
-      history.push("/login")
     }).catch((err) => {
       console.log(err)
       alert("Logout Failed")
