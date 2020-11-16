@@ -6,6 +6,7 @@ const AdminNew = (props) => {
   const [ email, setEmail ] = useState('')
   const [ password, setPassword ] = useState('')
   const [ passwordConfirm, setPasswordConfirm ] = useState('')
+  const [ registerCode, setRegisterCode ] = useState('')
   const [ noMatch, setNoMatch ] = useState(false)
   const { handleRegister } = useContext(AuthContext)
 
@@ -13,7 +14,7 @@ const AdminNew = (props) => {
     e.preventDefault()
     const user = {email, name, password}
     if(password === passwordConfirm) {
-      handleRegister(user, props.history);
+      handleRegister(user, props.history, registerCode);
       setNoMatch(false)
     } else setNoMatch(!noMatch)
   }
@@ -62,6 +63,15 @@ const AdminNew = (props) => {
         onChange={(e) => setPasswordConfirm(e.target.value)}
         />
         <p>{noMatch && "Password does not match" }</p>
+        <label htmlFor="name">Registration Code: </label>
+        <input 
+        required
+        id="registerCode"
+        name="registerCode"
+        value={registerCode}
+        placeholder="Registration Code"
+        onChange={(e) => setRegisterCode(e.target.value)}
+        />
         <button>Create</button>
       </form>
     </>  

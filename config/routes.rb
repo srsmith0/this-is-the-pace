@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   namespace :api do
     resources :users, only: [:update, :destroy]
+    get 'admin/posts', to: 'posts#admin_posts'
     resources :posts do
       resources :comments do
         resources :replies

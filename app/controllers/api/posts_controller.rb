@@ -3,6 +3,10 @@ class Api::PostsController < ApplicationController
     render json: Post.all 
   end
 
+  def admin_posts
+    render json: current_user.posts.all
+  end
+
   def show
     set_post
     render json: @post
@@ -34,7 +38,7 @@ class Api::PostsController < ApplicationController
 
 private
   def post_params
-    params.require(:post).permit(:title, :content, :image, :user_name)
+    params.require(:post).permit(:title, :content, :description, :topic, :image, :user_name)
   end
 
   def set_post
