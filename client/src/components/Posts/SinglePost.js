@@ -22,8 +22,13 @@ const SinglePost = ({post, deletePost}) => {
             <p>{post.content}</p>
           </div>
           <button>
-            <Link to="/admin/post_view">
-              Edit
+            <Link to={{
+              pathname: `/admin/post/${post.id}`,
+              state: {
+                post
+              }
+              }}>
+              View
             </Link>
           </button>
           <button onClick={() => deletePost(post.id)}>Delete</button>

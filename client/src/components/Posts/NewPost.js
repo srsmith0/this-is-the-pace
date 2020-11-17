@@ -48,7 +48,6 @@ const NewPost = (props) => {
       />
       <label htmlFor="content">Content: </label>
       <textarea
-        autoFocus
         required
         name="content"
         value={content}
