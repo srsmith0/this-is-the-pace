@@ -7,6 +7,7 @@ class CreatePosts < ActiveRecord::Migration[6.0]
       t.string :user_name
       t.string :description
       t.string :topic
+      t.string :shown_date
       t.belongs_to :user, null: false, foreign_key: true
 
       t.timestamps

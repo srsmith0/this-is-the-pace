@@ -8,11 +8,12 @@ class AuthProvider extends React.Component {
   state = { user: null };
 
   handleRegister = (user, history, registrationCode) => {
-    if(registrationCode === 123){
+    debugger;
+    if(registrationCode === process.env.REACT_APP_REGISTRATION_CODE){
     axios.post("/api/auth/", user)
     .then((res) => {
       this.setState({ user: res.data.data, });
-      history.push("/");
+      history.push("/admin/home");
     }).catch((err) => {
       console.log(err)
       alert("Registration Failed")

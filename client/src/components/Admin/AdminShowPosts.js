@@ -27,19 +27,19 @@ const AdminShowPosts = (props) => {
   }
 
   const renderPosts = () => {
+    if(!posts) return <div>Loading...</div>
+    else {
     return posts.map(post => <SinglePost key={post.id} post={post} deletePost={deletePost} />)
+    }
   }
   
   //TODO: add a loading spinner instead of null
-  if(!posts) return <div>Loading...</div>
-    else {
       return (
       <>
       <AdminNav history={props.history} />
       {renderPosts()}
       </>
       )
-    }
 }
 
 export default AdminShowPosts;
