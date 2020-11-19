@@ -1,0 +1,54 @@
+@import url("https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap");
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  box-sizing: border-box;
+  line-height: 1.7;
+  padding: 3rem;
+  background-color: #ddd;
+}
+
+.header {
+  height: 75vh;
+  background-image: url(./img/bcc.jpg);
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  /* -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%); */
+}
+
+.primary-heading {
+  font-family: "Permanent Marker", cursive;
+  text-transform: uppercase;
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: #ccc;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+.primary-heading--main {
+  display: block;
+  font-size: 4vw;
+  letter-spacing: 0.25vw;
+}
+
+.primary-heading--sub {
+  display: block;
+  font-size: 2vw;
+  letter-spacing: 0.5vw;
+}
