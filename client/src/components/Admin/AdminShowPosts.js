@@ -16,20 +16,10 @@ const AdminShowPosts = (props) => {
     })
   }, [])
 
-  const deletePost = (id) => {
-    axios.delete(`/api/posts/${id}`)
-    .then(() => {
-      setPosts(posts.filter(post => post.id !== id))
-    })
-    .catch((err) => {
-      console.log(err)
-    })
-  }
-
   const renderPosts = () => {
     if(!posts) return <div>Loading...</div>
     else {
-    return posts.map(post => <SinglePost key={post.id} post={post} deletePost={deletePost} />)
+    return posts.map(post => <SinglePost key={post.id} post={post} admin={true} />)
     }
   }
   

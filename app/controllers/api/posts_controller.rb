@@ -15,6 +15,7 @@ class Api::PostsController < ApplicationController
   def create
     new_post = current_user.posts.new(post_params)
     if new_post.save
+      new_post.update(shown_date: Post.set_date(new_post))
       render json: new_post
     else
       render json: new_post.errors, status: 422
