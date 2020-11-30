@@ -18,6 +18,16 @@ const AdminPostView = (props) => {
     topic
   }
 
+  const deletePost = (id) => {
+    axios.delete(`/api/posts/${id}`)
+    .then(() => {
+      props.history.push('/admin/all_posts')
+    })
+    .catch((err) => {
+      console.log(err)
+    })
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault()
     axios.patch(`/api/posts/${post.id}`, updatedPost)
@@ -79,12 +89,13 @@ const AdminPostView = (props) => {
 
   return (
     <div>
-      <AdminNav history={props.history} />
+      <AdminNav history={props.history} post={true} />
       <button 
         onClick={() => setEditing(!editing)}
       >
       {editing ? "Close" : "Edit" }
       </button>
+      <button onClick={() => deletePost(post.id)}>Delete</button>
       {editing ? editView() : renderPost()}
     </div>
   )

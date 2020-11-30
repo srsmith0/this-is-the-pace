@@ -3,8 +3,8 @@ import { Link, Redirect } from 'react-router-dom'
 import { AuthConsumer } from '../../providers/AuthProvider'
 
 const AdminLogin = (props) => {
-  const [ email, setEmail ] = useState('')
-  const [ password, setPassword ] = useState('')
+  const [ email, setEmail ] = useState('1@test.com')
+  const [ password, setPassword ] = useState('123456')
 
   const handleSubmit = (e) => {
     e.preventDefault()
