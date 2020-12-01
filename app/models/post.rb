@@ -1,15 +1,16 @@
 class Post < ApplicationRecord
   belongs_to :user
   has_many :comments, dependent: :destroy
+  after_create :set_date
 
-  def self.set_date(post)
-    show_month = Post.convert_month(post.created_at.to_date.month)
-    show_day = post.created_at.to_date.day
-    show_year = post.created_at.to_date.year
-    "#{show_month} #{show_day}, #{show_year}"
+  def set_date
+    show_month = convert_month(created_at.to_date.month)
+    show_day = created_at.to_date.day
+    show_year = created_at.to_date.year
+    update(shown_date: "#{show_month} #{show_day}, #{show_year}")
   end 
 
-  def self.convert_month(month)
+  def convert_month(month)
     case month 
     when 1
       "January"

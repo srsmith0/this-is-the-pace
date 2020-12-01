@@ -15,7 +15,6 @@ class Api::PostsController < ApplicationController
   def create
     new_post = current_user.posts.new(post_params)
     if new_post.save
-      new_post.update(shown_date: Post.set_date(new_post))
       render json: new_post
     else
       render json: new_post.errors, status: 422
@@ -38,6 +37,7 @@ class Api::PostsController < ApplicationController
 
 
 private
+
   def post_params
     params.require(:post).permit(:title, :content, :description, :topic, :image, :user_name)
   end
