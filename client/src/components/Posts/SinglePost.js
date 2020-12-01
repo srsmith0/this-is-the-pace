@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-const SinglePost = ({post, admin}) => {
+const SinglePost = ({post, history}) => {
 
   const renderPost = () => {
     return(
@@ -17,13 +17,15 @@ const SinglePost = ({post, admin}) => {
   const renderAdminPost = () => { 
       return(
         <div className="admin-post">
-          
             <Link to={{
               pathname: `/admin/post/${post.id}`,
               state: {
                 post
               }
-              }}><div className="admin-post-info">
+              }}
+              className="admin-post-link"
+              >
+            <div className="admin-post-info">
             <h2>{post.title}</h2>           
           <p>{post.shown_date}</p>
             <p>{post.description}</p> 
@@ -33,7 +35,7 @@ const SinglePost = ({post, admin}) => {
       )
   }
   
-  return admin ? renderAdminPost() : renderPost()
+  return history ? renderAdminPost() : renderPost()
 }
 
 export default SinglePost;
