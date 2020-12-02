@@ -28,46 +28,50 @@ const NewPost = (props) => {
       .catch((err) => {
         console.log(err)
       })
-    setTitle('')
-    setContent('')
-    setDescription('')
-    setTopic('')
+      props.history.push('/admin/home')
   }
 
   return (
     <div>
       <AdminNav history={props.history} />
-      <form onSubmit={handleSubmit}>
-      <label htmlFor="title">Title: </label>
+      <button onClick={props.history.goBack}>Cancel</button>
+      <form className="admin-post-form" onSubmit={handleSubmit}>
+      <label className="admin-label" htmlFor="title">Title: </label>
       <input
         autoFocus
+        className="admin-input"
         required
         name="title"
         value={title}
         onChange={(e) => setTitle(e.target.value)}
       />
-      <label htmlFor="content">Content: </label>
+      <label className="admin-label" htmlFor="content">Content: </label>
       <textarea
         required
+        className="content-area"
+        rows="20"
+        cols="60"
         name="content"
         value={content}
         onChange={(e) => setContent(e.target.value)}
       />
-      <label htmlFor="title">Description: </label>
+      <label className="admin-label" htmlFor="title">Description: </label>
       <input
         required
+        className="description-input admin-input"
         name="description"
         value={description}
         onChange={(e) => setDescription(e.target.value)}
       />
-      <label htmlFor="title">Topic: </label>
+      <label className="admin-label" htmlFor="title">Topic: </label>
       <input
         required
+        className="admin-input"
         name="topic"
         value={topic}
         onChange={(e) => setTopic(e.target.value)}
       />
-      <button>Create Post</button>
+      <button style={{width: "8rem", margin:"0 auto"}}>Create Post</button>
       </form>
     </div>
   )
