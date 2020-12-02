@@ -1,4 +1,5 @@
 import React from 'react'
+import "./Post.css"
 import { Link } from 'react-router-dom'
 
 const SinglePost = ({post, history}) => {
@@ -6,9 +7,10 @@ const SinglePost = ({post, history}) => {
   const renderPost = () => {
     return(
       <div className="post">
-        <h2>{post.title}</h2>
-        <div className="post-content">
-          <p>{post.content}</p>
+        <h3>{post.title}</h3>
+        <p>{`By ${post.user_name} on ${post.shown_date}`}</p>
+        <div className="post-description">
+          <p>{post.description}</p>
         </div>
       </div>
     )
