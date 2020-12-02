@@ -47,17 +47,17 @@ const AdminPostView = (props) => {
     return (
     <>
      <form onSubmit={handleSubmit}>
-      <div className="admin-edit-form">
-      <label className="edit-label" htmlFor="title">Title: </label>
+      <div className="admin-post-form">
+      <label className="admin-label" htmlFor="title">Title: </label>
       <input
         autoFocus
-        className="edit-input"
+        className="admin-input"
         required
         name="title"
         value={title}
         onChange={(e) => setTitle(e.target.value)}
       />
-      <label className="edit-label" htmlFor="content">Content: </label>
+      <label className="admin-label" htmlFor="content">Content: </label>
       <textarea
         required
         className="content-area"
@@ -67,18 +67,18 @@ const AdminPostView = (props) => {
         value={content}
         onChange={(e) => setContent(e.target.value)}
       />
-      <label className="edit-label" htmlFor="title">Description: </label>
+      <label className="admin-label" htmlFor="title">Description: </label>
       <input
         required
-        className="edit-input description-input" 
+        className="admin-input description-input" 
         name="description"
         value={description}
         onChange={(e) => setDescription(e.target.value)}
       />
-      <label className="edit-label" htmlFor="title">Topic: </label>
+      <label className="admin-label" htmlFor="title">Topic: </label>
       <input
         required
-        className="edit-input"
+        className="admin-input"
         name="topic"
         value={topic}
         onChange={(e) => setTopic(e.target.value)}

@@ -1,4 +1,5 @@
 import React from 'react'
+import './Admin.css'
 import { Link } from 'react-router-dom'
 import AdminNav from './AdminNav';
 
@@ -7,17 +8,19 @@ const AdminHome = (props) => {
   return (
     <div>
       <AdminNav history={props.history} />
-      <br />
-      <button>
-      <Link to="/admin/new_post">
-        Create New Post
+      <div className="admin-options">
+      <Link className="admin-link" to="/admin/new_post">
+        <div className="admin-home-buttons">
+          <span>Create New Post</span>
+        </div>
       </Link>
-      </button>
-      <button>
-      <Link to="/admin/all_posts">
-        Post History
+      <Link className="admin-link" to="/admin/all_posts">
+        <div className="admin-home-buttons">
+          <span>Post History</span>
+        </div>
       </Link>
-      </button>
+      </div>
+  
     </div>
   );
 };

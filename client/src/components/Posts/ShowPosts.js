@@ -17,13 +17,11 @@ const ShowPosts = () => {
 
   const renderPosts = () => {
     if(!posts) return null
-    else {
     return posts.map(post => <SinglePost key={post.id} post={post} />)
-    }
   }
 
   return (
-    <div>
+    <div className="post-grid">
       {renderPosts()}
     </div>
   )

@@ -13,11 +13,14 @@ const AdminLogin = (props) => {
 
   if(!props.auth.authenticated){
   return (
-    <>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="email">Email: </label>
+    <div className="sign-in">
+      <h1>This is the Pace</h1>
+      <h2>A running blog</h2>
+      <form className="login-form" onSubmit={handleSubmit}>
+        <label className="login-label" htmlFor="email">Email: </label>
         <input 
         autoFocus 
+        className="login-input"
         required
         type="email"
         id="email"
@@ -26,9 +29,10 @@ const AdminLogin = (props) => {
         placeholder="Email" 
         onChange={(e) => setEmail(e.target.value)}
         />
-        <label htmlFor="password">Password: </label>
+        <label className="login-label" htmlFor="password">Password: </label>
         <input  
         required
+        className="login-input"
         type="password"
         id="password"
         name="password"
@@ -36,12 +40,9 @@ const AdminLogin = (props) => {
         placeholder="Password"
         onChange={(e) => setPassword(e.target.value)}
         />
-        <button>Sign In</button>
+        <button className="login-button">Sign In</button>
       </form>
-      <Link to="/admin/new">
-        Register
-      </Link>
-    </>  
+    </div>  
   )
   } else return <Redirect to="/admin/home" />
 
