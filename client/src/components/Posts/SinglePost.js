@@ -2,13 +2,13 @@ import React from 'react'
 import "./Post.css"
 import { Link } from 'react-router-dom'
 
-const SinglePost = ({post, history}) => {
+const SinglePost = ({post, admin}) => {
 
   const renderPost = () => {
     return(
       <div className="post">
         <h3>{post.title}</h3>
-        <p>{`By ${post.user_name} on ${post.shown_date}`}</p>
+        <p>{`By ${post.user_name}`}</p>
         <div className="post-description">
           <p>{post.description}</p>
         </div>
@@ -37,7 +37,7 @@ const SinglePost = ({post, history}) => {
       )
   }
   
-  return history ? renderAdminPost() : renderPost()
+  return admin ? renderAdminPost() : renderPost()
 }
 
 export default SinglePost;

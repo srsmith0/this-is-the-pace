@@ -14,7 +14,9 @@ const AdminLogin = (props) => {
   if(!props.auth.authenticated){
   return (
     <div className="sign-in">
-      <h1>This is the Pace</h1>
+      <Link className="header-link" to="/">
+        <h1>This is the Pace</h1>
+      </Link>
       <h2>A running blog</h2>
       <form className="login-form" onSubmit={handleSubmit}>
         <label className="login-label" htmlFor="email">Email: </label>

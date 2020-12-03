@@ -26,7 +26,7 @@ body {
   background-position: center;
   position: relative;
   border-radius: 8px;
-  margin-bottom: 6rem;
+  margin-bottom: 2rem;
 }
 
 .primary-heading {
@@ -51,4 +51,11 @@ body {
   display: block;
   font-size: 2vw;
   letter-spacing: 0.5vw;
+}
+
+.main-page-nav {
+  text-align: center;
+  background-color: grey;
+  height: 4rem;
+  border-radius: 8px;
 }
