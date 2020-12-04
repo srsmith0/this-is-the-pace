@@ -1,5 +1,6 @@
 import React from 'react'
 import '../Header.css'
+import Navbar from './Navbar'
 import ShowPosts from './Posts/ShowPosts'
 
 const LandingPage = () => {
@@ -12,7 +13,7 @@ const LandingPage = () => {
         </h1>
       </header>
       {/* TODO: add a tagline */}
-      <div className="main-page-nav"><h2>Landing Page Navigation Here</h2></div>
+      <Navbar />
       <ShowPosts />
     </div>
       )

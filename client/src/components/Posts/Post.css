@@ -4,12 +4,19 @@
 }
 
 .post {
+  font-family: "East Sea Dokdo", cursive;
+  font-size: 2rem;
   display: inline-block;
   border: black solid 2px;
   border-radius: 8px;
   width: 30rem;
   height: 20rem;
   margin: 2rem auto;
+}
+
+.post h3 {
+  font-size: 3rem;
+  margin-bottom: -1rem;
 }
 
 .post:hover {
@@ -26,20 +33,29 @@
   transform: scaleX(1.3) scaleY(1.3);
   opacity: 0;
 }
-.post h3 {
-  font-size: 1.75rem;
+
+.post-story {
   text-align: center;
+  transform: translateY(3rem);
+  transition: all 0.5s;
+}
+
+.post:hover .post-story {
+  opacity: 0.5;
+  transform: translateY(1rem);
 }
 
 .post-description {
-  font-size: 1.5rem;
+  font-size: 1.75rem;
   text-align: center;
-  transform: translateY(100%);
+  transform: translate(0%, 100%);
   opacity: 0;
   transition: all 0.8s;
 }
 
 .post:hover .post-description {
   opacity: 1;
-  transform: translateY(50%);
+  transform: translateY(45%);
 }
+
+/* font-family: "Do Hyeon", sans-serif; */

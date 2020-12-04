@@ -14,11 +14,9 @@ const AdminPostView = (props) => {
   const [description, setDescription] = useState(postView.description)
   const [topic, setTopic] = useState(postView.topic)
 
-  const updatedPost = {
-    title,
-    content,
-    description,
-    topic
+  // TODO: passes an Object.  react renders entire string. need to get rid of quotes
+  const formatContent = (content) => {
+    return content.replace(/\r?\n/g, <br />)
   }
 
   const deletePost = (id) => {
@@ -36,6 +34,12 @@ const AdminPostView = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
+    const updatedPost = {
+      title,
+      content: formatContent(content),
+      description,
+      topic
+    }
     axios.patch(`/api/posts/${post.id}`, updatedPost)
     .then((res) => {
       setPostView(res.data)
@@ -114,7 +118,6 @@ const AdminPostView = (props) => {
         <DeleteForeverIcon fontSize="large" color="secondary"/>
       </span>
       </div>
-
       {editing ? editView() : renderPost()}
     </div>
   )

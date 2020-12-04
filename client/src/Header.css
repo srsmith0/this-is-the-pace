@@ -1,4 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=East+Sea+Dokdo&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap");
 
 *,
 *::after,
@@ -14,7 +16,7 @@ html {
 
 body {
   box-sizing: border-box;
-  line-height: 1.7;
+  line-height: 1.5;
   padding: 3rem;
   background-color: #eeeeef;
 }
@@ -55,7 +57,19 @@ body {
 
 .main-page-nav {
   text-align: center;
-  background-color: grey;
+  background-color: #8a794c;
   height: 4rem;
   border-radius: 8px;
+}
+
+.main-nav-item {
+  font-family: "East Sea Dokdo", cursive;
+  display: inline-block;
+  font-size: 2.75em;
+  margin: 0 2%;
+}
+
+.main-nav-item:hover {
+  color: #eeeeee;
+  cursor: pointer;
 }

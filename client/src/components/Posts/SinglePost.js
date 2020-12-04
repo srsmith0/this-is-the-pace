@@ -7,8 +7,10 @@ const SinglePost = ({post, admin}) => {
   const renderPost = () => {
     return(
       <div className="post">
+        <div className="post-story">
         <h3>{post.title}</h3>
         <p>{`By ${post.user_name}`}</p>
+        </div>
         <div className="post-description">
           <p>{post.description}</p>
         </div>
