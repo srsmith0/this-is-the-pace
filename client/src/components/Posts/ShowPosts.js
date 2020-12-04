@@ -15,9 +15,23 @@ const ShowPosts = () => {
     })
   }, [])
 
+  const compare = (a, b) => {
+		const createA = a.created_at;
+		const createB = b.created_at;
+
+		let comparison = 0;
+		if (createA > createB) {
+			comparison = -1;
+		} else if (createA < createB) {
+			comparison = 1;
+		}
+		return comparison;
+	}
+
   const renderPosts = () => {
-    if(!posts) return null
-    return posts.map(post => <SinglePost key={post.id} post={post} />)
+    if(!posts) return <div>Loading...</div>
+    let sortedPosts = posts.sort(compare)
+    return sortedPosts.map(post => <SinglePost key={post.id} post={post}/>)
   }
 
   return (

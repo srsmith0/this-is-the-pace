@@ -16,7 +16,7 @@ const AdminShowPosts = (props) => {
     })
   }, [])
 
-  function compare(a, b) {
+  const compare = (a, b) => {
 		const createA = a.created_at;
 		const createB = b.created_at;
 
@@ -31,10 +31,8 @@ const AdminShowPosts = (props) => {
 
   const renderPosts = () => {
     if(!posts) return <div>Loading...</div>
-    else {
     let sortedPosts = posts.sort(compare)
-    return sortedPosts.map(post => <SinglePost key={post.id} post={post} history={props.history} />)
-    }
+    return sortedPosts.map(post => <SinglePost key={post.id} post={post} admin={true} />)
   }
   
   //TODO: add a loading spinner instead of null
