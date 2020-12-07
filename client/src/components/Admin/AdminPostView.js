@@ -2,8 +2,9 @@ import React, { useState } from 'react'
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import EditIcon from '@material-ui/icons/Edit';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
-import axios from 'axios'
-import AdminNav from './AdminNav'
+import axios from 'axios';
+import CKEditor from 'ckeditor4-react';
+import AdminNav from './AdminNav';
 
 const AdminPostView = (props) => {
   const { post } = props.location.state
@@ -14,9 +15,11 @@ const AdminPostView = (props) => {
   const [description, setDescription] = useState(postView.description)
   const [topic, setTopic] = useState(postView.topic)
 
-  // TODO: passes an Object.  react renders entire string. need to get rid of quotes
-  const formatContent = (content) => {
-    return content.replace(/\r?\n/g, <br />)
+  const updatedPost = {
+    title,
+    content,
+    description,
+    topic
   }
 
   const deletePost = (id) => {
@@ -34,12 +37,6 @@ const AdminPostView = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    const updatedPost = {
-      title,
-      content: formatContent(content),
-      description,
-      topic
-    }
     axios.patch(`/api/posts/${post.id}`, updatedPost)
     .then((res) => {
       setPostView(res.data)
@@ -71,6 +68,12 @@ const AdminPostView = (props) => {
         value={content}
         onChange={(e) => setContent(e.target.value)}
       />
+            {/* TODO: keep editor???
+      <CKEditor
+        name="content"
+        data={content}
+        onChange={(e) => setContent(e.editor.getData())}
+      /> */}
       <label className="admin-label" htmlFor="title">Description: </label>
       <input
         required
@@ -99,7 +102,7 @@ const AdminPostView = (props) => {
       <>
         <h1>{postView.title}</h1>
         <h3>{postView.description}</h3>
-        <p>{postView.content}</p>
+          <article className="paragraph">{postView.content}</article>
       </>
     )
   }
