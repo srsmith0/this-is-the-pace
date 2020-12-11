@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=East+Sea+Dokdo&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;800&display=swap");
 
 *,
 *::after,
@@ -39,7 +40,7 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
-  color: #ddddef;
+  color: #eeeeef;
   text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
 
@@ -67,9 +68,12 @@ body {
   display: inline-block;
   font-size: 2.75em;
   margin: 0 2%;
+  transition: all 0.2s;
 }
 
 .main-nav-item:hover {
-  color: #eeeeee;
+  color: #eeeeef;
   cursor: pointer;
+  text-shadow: 0 1rem 2rem rgba(#000, 0.4);
+  transform: rotate(8deg) scale(1.5);
 }

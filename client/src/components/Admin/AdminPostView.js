@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import EditIcon from '@material-ui/icons/Edit';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
@@ -7,13 +7,26 @@ import CKEditor from 'ckeditor4-react';
 import AdminNav from './AdminNav';
 
 const AdminPostView = (props) => {
-  const { post } = props.location.state
-  const [ postView, setPostView ] = useState(post)
+  const { id } = props.match.params
+  const [ post, setPost ] = useState(null)
   const [ editing, setEditing ] = useState(false)
-  const [title, setTitle] = useState(postView.title)
-  const [content, setContent] = useState(postView.content)
-  const [description, setDescription] = useState(postView.description)
-  const [topic, setTopic] = useState(postView.topic)
+  const [title, setTitle] = useState(" ")
+  const [content, setContent] = useState(" ")
+  const [description, setDescription] = useState(" ")
+  const [topic, setTopic] = useState(" ")
+
+  useEffect(() => {
+    getPost(id)
+  }, [])
+  
+  const getPost = async (id) => {
+    const post = await axios.get(`/api/posts/${id}`)
+    setPost(post.data);
+    setTitle(post.data.title)
+    setContent(post.data.content)
+    setDescription(post.data.description)
+    setTopic(post.data.topic)
+   }
 
   const updatedPost = {
     title,
@@ -37,9 +50,9 @@ const AdminPostView = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    axios.patch(`/api/posts/${post.id}`, updatedPost)
+    axios.patch(`/api/posts/${id}`, updatedPost)
     .then((res) => {
-      setPostView(res.data)
+      setPost(res.data)
       setEditing(!editing)
     })
   }
@@ -100,13 +113,14 @@ const AdminPostView = (props) => {
   const renderPost = () => {
     return (
       <>
-        <h1>{postView.title}</h1>
-        <h3>{postView.description}</h3>
-          <article className="paragraph">{postView.content}</article>
+        <h1>{post.title}</h1>
+        <h3>{post.description}</h3>
+          <article className="paragraph">{post.content}</article>
       </>
     )
   }
 
+  if(!post) return <div>Loading...</div>
   return (
     <div>
       <AdminNav history={props.history} />

@@ -7,6 +7,7 @@ const SinglePost = ({post, admin}) => {
   const renderPost = () => {
     return(
       <div className="post">
+        <Link to={`/post/${post.id}`} className="post-link">
         <div className="post-story">
         <h3>{post.title}</h3>
         <p>{`By ${post.user_name}`}</p>
@@ -14,6 +15,7 @@ const SinglePost = ({post, admin}) => {
         <div className="post-description">
           <p>{post.description}</p>
         </div>
+        </Link>
       </div>
     )
   }
@@ -21,20 +23,13 @@ const SinglePost = ({post, admin}) => {
   const renderAdminPost = () => { 
       return(
         <div className="admin-post">
-            <Link to={{
-              pathname: `/admin/post/${post.id}`,
-              state: {
-                post
-              }
-              }}
-              className="admin-post-link"
-              >
+          <Link to={`/admin/post/${post.id}`} className="admin-post-link">
             <div className="admin-post-info">
-            <h2>{post.title}</h2>           
-          <p>{post.shown_date}</p>
-            <p>{post.description}</p> 
-          </div>
-</Link>
+              <h2>{post.title}</h2>           
+              <p>{post.shown_date}</p>
+              <p>{post.description}</p> 
+           </div>
+          </Link>
         </div>
       )
   }

@@ -7,6 +7,10 @@ const AdminShowPosts = (props) => {
   const [ posts, setPosts ] = useState(null)
 
   useEffect(() => {
+    getPosts();
+  }, [])
+
+  const getPosts = () => {
     axios.get(`/api/admin/posts`)
     .then((res) => {
       setPosts(res.data)
@@ -14,7 +18,7 @@ const AdminShowPosts = (props) => {
     .catch((err) => {
       console.log(err)
     })
-  }, [])
+  }
 
   const compare = (a, b) => {
 		const createA = a.created_at;

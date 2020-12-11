@@ -1,0 +1,51 @@
+.show-post-title {
+  font-family: "East Sea Dokdo", cursive;
+  font-size: 6rem;
+}
+
+.post-author {
+  font-family: "East Sea Dokdo", cursive;
+  font-size: 2.5rem;
+  margin: -1rem 0 1rem 0;
+}
+
+.all-comments {
+  margin-top: 5rem;
+}
+
+.comment-title {
+  font-family: "East Sea Dokdo", cursive;
+  font-size: 4rem;
+}
+
+.comment-body {
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.25rem;
+}
+
+.comment-author {
+  font-family: "Montserrat", sans-serif;
+  margin-bottom: 0.5rem;
+  font-weight: 800;
+}
+
+.comment-author-input {
+  width: 25%;
+}
+
+.comment-content-input {
+  width: 50%;
+  height: 100rem;
+  font-size: 3rem !important;
+}
+
+.comment-form {
+  display: flex;
+  flex-direction: column;
+  height: 30rem;
+}
+
+.comment-form button {
+  width: 25%;
+  transform: translateY(-300%);
+}

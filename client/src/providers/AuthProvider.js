@@ -45,6 +45,17 @@ class AuthProvider extends React.Component {
     })
   }
 
+  getPost = (id) => {
+    debugger;
+    axios.get(`/api/posts/${id}`)
+    .then((res) => {
+      debugger;
+      return res.data
+    }).catch(err => {
+      console.log(err)
+    })
+  }
+
   render() {
     return (
       <AuthContext.Provider value={{
@@ -54,6 +65,7 @@ class AuthProvider extends React.Component {
       handleLogin: this.handleLogin,
       handleLogout: this.handleLogout,
       setUser: (user) => this.setState({ user }),
+      getPost: this.getPost
       }}>
         { this.props.children}
       </AuthContext.Provider>

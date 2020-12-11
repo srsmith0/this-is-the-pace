@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import SinglePost from './SinglePost'
 
-const ShowPosts = () => {
+const ShowAllPosts = () => {
   const [ posts, setPosts ] = useState(null)
   
   useEffect(() => {
@@ -41,4 +41,4 @@ const ShowPosts = () => {
   )
 }
 
-export default ShowPosts;
+export default ShowAllPosts;
