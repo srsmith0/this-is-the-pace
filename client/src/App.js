@@ -10,12 +10,14 @@ import AdminShowPosts from './components/Admin/AdminShowPosts';
 import AdminHome from './components/Admin/AdminHome';
 import ProtectedRoute from './components/Admin/ProtectedRoute';
 import AdminPostView from './components/Admin/AdminPostView';
+import ShowPost from './components/Posts/ShowPost';
 
 const App = () => (
   <Fragment>
     <FetchUser>
       <Switch>
         <Route exact path="/" component={LandingPage} />
+        <Route exact path="/post/:id" component={ShowPost} />
         <Route exact path="/admin" component={AdminLogin} />
         <Route exact path="/admin/new" component={AdminNew} />
         <ProtectedRoute exact path="/admin/home" component={AdminHome} />

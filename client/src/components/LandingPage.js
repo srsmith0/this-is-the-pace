@@ -1,7 +1,7 @@
 import React from 'react'
 import '../Header.css'
 import Navbar from './Navbar'
-import ShowPosts from './Posts/ShowPosts'
+import ShowAllPosts from './Posts/ShowAllPosts'
 
 const LandingPage = () => {
   return (
@@ -14,7 +14,7 @@ const LandingPage = () => {
       </header>
       {/* TODO: add a tagline */}
       <Navbar />
-      <ShowPosts />
+      <ShowAllPosts />
     </div>
       )
 }
