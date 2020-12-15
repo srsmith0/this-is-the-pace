@@ -4,12 +4,11 @@ import axios from 'axios';
 import { Button, TextField } from '@material-ui/core';
 import HomeIcon from '@material-ui/icons/Home';
 import ShowComment from '../Comments/ShowComment';
+import CommentForm from '../Comments/CommentForm';
 
 const ShowPost = (props) => {
   const [ post, setPost ] = useState(null)
   const [ comments, setComments ] = useState(null);
-  const [ commentAuthor, setCommentAuthor ] = useState(" ")
-  const [ commentContent, setCommentContent ] = useState(" ")
   const { id } = props.match.params
 
   useEffect(() => {
@@ -41,42 +40,29 @@ const ShowPost = (props) => {
     })
   };
 
+  const compare = (a, b) => {
+		const createA = a.created_at;
+		const createB = b.created_at;
+
+		let comparison = 0;
+		if (createA > createB) {
+			comparison = -1;
+		} else if (createA < createB) {
+			comparison = 1;
+		}
+		return comparison;
+	}
+
   const renderComments = () => {
     if(!comments) return <p>Loading...</p>
+    const sortedComments = comments.sort(compare)
     return (
       <>
       <h2 className="comment-title">{comments.length} comments</h2>
-      {comments.map(comment => <ShowComment key={comment.id} comment={comment} />)}
+      {sortedComments.map(comment => <ShowComment key={comment.id} comment={comment} />)}
       </>
     )
   };
-
-  const commentBox = () => {
-    return (
-      <div>
-        <h3 className="comment-title">What are your thoughts?</h3>
-        <form autoComplete="off" className="comment-form">
-        <TextField 
-          className="comment-author-input"
-          margin="normal"
-          value={commentAuthor} 
-          onChange={(e) => setCommentAuthor(e.target.value)} 
-          label="Name" 
-          required/>
-        <TextField 
-          className="comment-content-input"
-          margin="normal"
-          rows="4"
-          value={commentContent} 
-          onChange={(e) => setCommentContent(e.target.value)} 
-          label="Comment" 
-          variant="outlined" 
-          multiline required/>
-          <Button variant="contained" color="primary">Post</Button>
-        </form>
-      </div>
-    )
-  }
 
   if(!post) return <div>Loading...</div>
   return (
@@ -85,12 +71,10 @@ const ShowPost = (props) => {
     {renderPost()}
     <div className="all-comments">
     {renderComments()}
-    {commentBox()}
+    <CommentForm setComments={setComments} comments={comments} postId={id}/>
     </div>
     </>
   )
 };
 
 export default ShowPost;
-
-//TODO: create comment controller, ADD BACK BUTTON/TITLE LINK, create comment form, COMMENT SUBMISSION,
