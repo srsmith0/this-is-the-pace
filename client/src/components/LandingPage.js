@@ -12,7 +12,6 @@ const LandingPage = () => {
           <span className="primary-heading--sub">A Wasatch Running Blog</span>
         </h1>
       </header>
-      {/* TODO: add a tagline */}
       <Navbar />
       <ShowAllPosts />
     </div>
