@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './ShowPost.css'
 import axios from 'axios';
-import { Button, TextField } from '@material-ui/core';
-import HomeIcon from '@material-ui/icons/Home';
 import ShowComment from '../Comments/ShowComment';
 import CommentForm from '../Comments/CommentForm';
 
@@ -14,7 +12,7 @@ const ShowPost = (props) => {
   useEffect(() => {
     getComments(id)
     getPost(id)
-  }, [])
+  }, [id])
 
   const getPost = async (id) => {
    const post = await axios.get(`/api/posts/${id}`)
@@ -67,7 +65,9 @@ const ShowPost = (props) => {
   if(!post) return <div>Loading...</div>
   return (
     <>
-    <span className="nav-item" onClick={() => props.history.push(`/`)}><HomeIcon fontSize="large" /></span>
+    <div className="title-top">
+    <span className="title-back" onClick={() => props.history.push(`/`)}>this is the pace</span>
+    </div>
     {renderPost()}
     <div className="all-comments">
     {renderComments()}

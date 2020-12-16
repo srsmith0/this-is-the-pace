@@ -1,9 +1,8 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import EditIcon from '@material-ui/icons/Edit';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import axios from 'axios';
-import CKEditor from 'ckeditor4-react';
 import AdminNav from './AdminNav';
 
 const AdminPostView = (props) => {
@@ -17,7 +16,7 @@ const AdminPostView = (props) => {
 
   useEffect(() => {
     getPost(id)
-  }, [])
+  }, [id])
   
   const getPost = async (id) => {
     const post = await axios.get(`/api/posts/${id}`)
@@ -81,12 +80,6 @@ const AdminPostView = (props) => {
         value={content}
         onChange={(e) => setContent(e.target.value)}
       />
-            {/* TODO: keep editor???
-      <CKEditor
-        name="content"
-        data={content}
-        onChange={(e) => setContent(e.editor.getData())}
-      /> */}
       <label className="admin-label" htmlFor="title">Description: </label>
       <input
         required

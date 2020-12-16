@@ -69,4 +69,20 @@
   transform: translateY(0%);
 }
 
+.title-back {
+  text-transform: uppercase;
+  font-size: 2.75rem;
+  display: inline-block;
+  font-family: "Permanent Marker", cursive;
+}
+
+.title-back:hover {
+  cursor: pointer;
+  color: #555;
+}
+
+.title-top {
+  text-align: center;
+}
+
 /* font-family: "Do Hyeon", sans-serif; */

@@ -5,7 +5,8 @@ const Navbar = () => {
     <div className="main-page-nav">
       <div className="nav-items">
       <p className="main-nav-item">Topics</p>
-      <p className="main-nav-item">All Articles</p>
+      <p className="main-nav-item">Training</p>
+      <p className="main-nav-item">Nutrition</p>
       <p className="main-nav-item">About Us</p>
       </div>
     </div>
